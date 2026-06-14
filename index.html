@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>2026/06/20 SVS Seating Proposal</title>
+  <title>2026/06/20 SVS配席</title>
   <style>
     :root {
       color-scheme: light;
@@ -13,7 +13,6 @@
       --cyan: #8ee9ff;
       --orange: #ffd29a;
       --red: #ef233c;
-      --red-soft: #fff1f2;
       --warn: #b45309;
       --warn-soft: #fff7ed;
     }
@@ -28,7 +27,7 @@
     }
 
     header {
-      padding: 16px 18px 10px;
+      padding: 14px 18px;
       background: #fff;
       border-bottom: 1px solid var(--line);
     }
@@ -36,25 +35,11 @@
     .bar {
       max-width: 1160px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 12px;
-      align-items: start;
-    }
-
-    .topline {
       display: flex;
-      flex-wrap: wrap;
+      justify-content: space-between;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 8px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(20px, 3vw, 30px);
-      line-height: 1.2;
-      letter-spacing: 0;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     .status {
@@ -68,24 +53,16 @@
       white-space: nowrap;
     }
 
-    .date {
-      white-space: nowrap;
-      color: var(--muted);
-      font-weight: 800;
-      text-align: end;
-    }
-
     .controls {
       display: flex;
-      justify-content: flex-end;
       align-items: center;
       gap: 8px;
-      margin-top: 6px;
+      flex-wrap: wrap;
     }
 
     label {
       color: var(--muted);
-      font-weight: 700;
+      font-weight: 800;
     }
 
     select {
@@ -96,7 +73,7 @@
       background: #fff;
       color: var(--ink);
       font-size: 15px;
-      font-weight: 700;
+      font-weight: 800;
     }
 
     main {
@@ -106,7 +83,6 @@
     }
 
     .map-wrap {
-      position: relative;
       background: #fff;
       border: 1px solid var(--line);
       border-radius: 10px;
@@ -114,56 +90,12 @@
       box-shadow: 0 8px 24px rgba(15, 23, 42, .06);
     }
 
-    .map-stage {
-      position: relative;
-      max-width: 100%;
-      overflow: hidden;
-      border-radius: 6px;
-    }
-
-    .map-stage img {
+    img {
       display: block;
       width: 100%;
       height: auto;
+      border-radius: 6px;
     }
-
-    .map-overlay {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
-
-    .red-zone {
-      fill: none;
-      stroke: var(--red);
-      stroke-width: 7;
-      vector-effect: non-scaling-stroke;
-    }
-
-    .gate-box,
-    .castle-box {
-      fill: #fff;
-      stroke: #2b2f33;
-      stroke-width: 2;
-      vector-effect: non-scaling-stroke;
-    }
-
-    .gate-text,
-    .castle-text {
-      fill: #1f2933;
-      font-weight: 800;
-      text-anchor: middle;
-      dominant-baseline: central;
-      paint-order: stroke;
-      stroke: #fff;
-      stroke-width: 3px;
-      stroke-linejoin: round;
-    }
-
-    .gate-text { font-size: 22px; }
-    .castle-text { font-size: 20px; }
 
     .legend {
       display: flex;
@@ -203,22 +135,18 @@
       line-height: 1.6;
     }
 
-    [dir="rtl"] .date { text-align: start; }
+    [dir="rtl"] .bar,
+    [dir="rtl"] .controls,
+    [dir="rtl"] .legend {
+      direction: rtl;
+    }
 
     @media (max-width: 720px) {
       .bar {
-        grid-template-columns: 1fr;
+        align-items: stretch;
       }
 
-      .date {
-        text-align: start;
-      }
-
-      .controls {
-        justify-content: flex-start;
-        flex-wrap: wrap;
-      }
-
+      .controls,
       select {
         width: 100%;
       }
@@ -232,58 +160,33 @@
 <body>
   <header>
     <div class="bar">
-      <div>
-        <div class="topline">
-          <span class="status" data-i18n="status">相手国に提案中（未決定）</span>
-        </div>
-        <h1 data-i18n="title">2026/06/20 SVS配席</h1>
-      </div>
-      <div>
-        <div class="date" data-i18n="date">2026/06/14時点</div>
-        <div class="controls">
-          <label for="language" data-i18n="languageLabel">表示言語</label>
-          <select id="language" aria-label="Language">
-            <option value="ja">日本語</option>
-            <option value="en">English</option>
-            <option value="zh-CN">简体中文</option>
-            <option value="zh-TW">繁體中文</option>
-            <option value="ko">한국어</option>
-            <option value="ar">العربية</option>
-            <option value="es">Español</option>
-            <option value="pt-BR">Português</option>
-            <option value="ru">Русский</option>
-            <option value="id">Bahasa Indonesia</option>
-            <option value="th">ไทย</option>
-            <option value="vi">Tiếng Việt</option>
-            <option value="fr">Français</option>
-            <option value="de">Deutsch</option>
-            <option value="tr">Türkçe</option>
-          </select>
-        </div>
+      <span class="status" data-i18n="status">相手国に提案中（未決定）</span>
+      <div class="controls">
+        <label for="language" data-i18n="languageLabel">表示言語</label>
+        <select id="language" aria-label="Language">
+          <option value="ja">日本語</option>
+          <option value="en">English</option>
+          <option value="zh-CN">简体中文</option>
+          <option value="zh-TW">繁體中文</option>
+          <option value="ko">한국어</option>
+          <option value="ar">العربية</option>
+          <option value="es">Español</option>
+          <option value="pt-BR">Português</option>
+          <option value="ru">Русский</option>
+          <option value="id">Bahasa Indonesia</option>
+          <option value="th">ไทย</option>
+          <option value="vi">Tiếng Việt</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="tr">Türkçe</option>
+        </select>
       </div>
     </div>
   </header>
 
   <main>
     <section class="map-wrap" aria-label="SVS seating map">
-      <div class="map-stage">
-        <img src="assets/seating-map-base.png" alt="2026/06/20 seating proposal map">
-        <svg class="map-overlay" viewBox="0 0 1488 1029" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-          <polygon class="red-zone" points="742,94 1347,522 742,950 137,522"></polygon>
-
-          <rect class="gate-box" x="721" y="346" width="42" height="42" transform="rotate(45 742 367)"></rect>
-          <rect class="gate-box" x="946" y="503" width="42" height="42" transform="rotate(45 967 524)"></rect>
-          <rect class="gate-box" x="721" y="657" width="42" height="42" transform="rotate(45 742 678)"></rect>
-          <rect class="gate-box" x="496" y="502" width="42" height="42" transform="rotate(45 517 523)"></rect>
-          <rect class="castle-box" x="665" y="446" width="154" height="154" transform="rotate(45 742 523)"></rect>
-
-          <text class="gate-text" x="742" y="367" data-svg-i18n="north">北</text>
-          <text class="gate-text" x="967" y="524" data-svg-i18n="east">東</text>
-          <text class="gate-text" x="742" y="678" data-svg-i18n="south">南</text>
-          <text class="gate-text" x="517" y="523" data-svg-i18n="west">西</text>
-          <text class="castle-text" x="742" y="523" data-svg-i18n="castle">太陽城</text>
-        </svg>
-      </div>
+      <img src="assets/2026-06-20-svs-seating.png" alt="2026/06/20 SVS seating proposal map">
     </section>
 
     <div class="legend" aria-label="Legend">
@@ -301,184 +204,139 @@
   <script>
     const translations = {
       "ja": {
-        title: "2026/06/20 SVS配席",
         status: "相手国に提案中（未決定）",
-        date: "2026/06/14時点",
         languageLabel: "表示言語",
         sideA: "3301側: 80席",
         sideB: "3323側: 80席",
         redZone: "外周レッドゾーン",
         note1: "このページは、配席案とルール確認のための閲覧専用ページです。",
-        note2: "水色・橙色のマスは各80席です。中央空白と東西南北まわりの座れないマスは配席対象外です。",
-        north: "北", east: "東", south: "南", west: "西", castle: "太陽城"
+        note2: "水色・橙色のマスは各80席です。中央空白と東西南北まわりの座れないマスは配席対象外です。"
       },
       "en": {
-        title: "2026/06/20 Seating Proposal",
         status: "Proposed to the opposing side (not final)",
-        date: "As of 2026/06/14",
         languageLabel: "Language",
         sideA: "3301 side: 80 seats",
         sideB: "3323 side: 80 seats",
         redZone: "Outer red zone",
         note1: "This page is view-only for seating and rule confirmation.",
-        note2: "Cyan and orange areas each contain 80 seats. The center blank area and unavailable gate-side cells are not included.",
-        north: "N", east: "E", south: "S", west: "W", castle: "Sun Castle"
+        note2: "Cyan and orange areas each contain 80 seats. The center blank area and unavailable gate-side cells are not included."
       },
       "zh-CN": {
-        title: "2026/06/20 座位提案",
         status: "已向对方提出（未最终确定）",
-        date: "截至 2026/06/14",
         languageLabel: "显示语言",
         sideA: "3301方：80个座位",
         sideB: "3323方：80个座位",
         redZone: "外圈红区",
         note1: "此页面仅用于查看座位提案和确认规则。",
-        note2: "水色和橙色区域各有80个座位。中央空白区以及四门附近不可坐的位置不计入座位。",
-        north: "北", east: "东", south: "南", west: "西", castle: "太阳城"
+        note2: "水色和橙色区域各有80个座位。中央空白区以及四门附近不可坐的位置不计入座位。"
       },
       "zh-TW": {
-        title: "2026/06/20 座位提案",
         status: "已向對方提出（尚未確定）",
-        date: "截至 2026/06/14",
         languageLabel: "顯示語言",
         sideA: "3301方：80席",
         sideB: "3323方：80席",
         redZone: "外圈紅區",
         note1: "此頁面僅供查看座位提案與確認規則。",
-        note2: "水色與橙色區域各有80席。中央空白區及四門附近不可坐的位置不列入座位。",
-        north: "北", east: "東", south: "南", west: "西", castle: "太陽城"
+        note2: "水色與橙色區域各有80席。中央空白區及四門附近不可坐的位置不列入座位。"
       },
       "ko": {
-        title: "2026/06/20 좌석 제안",
         status: "상대 측에 제안 중 (미확정)",
-        date: "2026/06/14 기준",
         languageLabel: "표시 언어",
         sideA: "3301 측: 80석",
         sideB: "3323 측: 80석",
         redZone: "외곽 레드존",
         note1: "이 페이지는 좌석안과 규칙 확인을 위한 읽기 전용 페이지입니다.",
-        note2: "하늘색과 주황색 구역은 각각 80석입니다. 중앙 공백과 사방 게이트 주변의 착석 불가 칸은 제외됩니다.",
-        north: "북", east: "동", south: "남", west: "서", castle: "태양성"
+        note2: "하늘색과 주황색 구역은 각각 80석입니다. 중앙 공백과 사방 게이트 주변의 착석 불가 칸은 제외됩니다."
       },
       "ar": {
-        title: "مقترح المقاعد 2026/06/20",
         status: "مقترح للطرف المقابل (غير نهائي)",
-        date: "اعتبارا من 2026/06/14",
         languageLabel: "اللغة",
         sideA: "جانب 3301: 80 مقعدا",
         sideB: "جانب 3323: 80 مقعدا",
         redZone: "المنطقة الحمراء الخارجية",
         note1: "هذه الصفحة للعرض فقط من أجل مراجعة المقاعد والقواعد.",
-        note2: "تحتوي المناطق السماوية والبرتقالية على 80 مقعدا لكل جانب. المنطقة الوسطى والخانات غير المتاحة قرب البوابات غير مشمولة.",
-        north: "ش", east: "ق", south: "ج", west: "غ", castle: "القلعة"
+        note2: "تحتوي المناطق السماوية والبرتقالية على 80 مقعدا لكل جانب. المنطقة الوسطى والخانات غير المتاحة قرب البوابات غير مشمولة."
       },
       "es": {
-        title: "Propuesta de asientos 2026/06/20",
         status: "Propuesta enviada al rival (no final)",
-        date: "Al 2026/06/14",
         languageLabel: "Idioma",
         sideA: "Lado 3301: 80 asientos",
         sideB: "Lado 3323: 80 asientos",
         redZone: "Zona roja exterior",
         note1: "Esta pagina es solo de lectura para revisar asientos y reglas.",
-        note2: "Las zonas cian y naranja tienen 80 asientos cada una. El centro y las casillas no disponibles cerca de las puertas no cuentan.",
-        north: "N", east: "E", south: "S", west: "O", castle: "Castillo"
+        note2: "Las zonas cian y naranja tienen 80 asientos cada una. El centro y las casillas no disponibles cerca de las puertas no cuentan."
       },
       "pt-BR": {
-        title: "Proposta de assentos 2026/06/20",
         status: "Proposta enviada ao lado adversario (nao final)",
-        date: "Em 2026/06/14",
         languageLabel: "Idioma",
         sideA: "Lado 3301: 80 assentos",
         sideB: "Lado 3323: 80 assentos",
         redZone: "Zona vermelha externa",
         note1: "Esta pagina e somente para visualizacao da proposta de assentos e das regras.",
-        note2: "As areas ciano e laranja contem 80 assentos cada. A area central e as celulas indisponiveis perto dos portoes nao contam.",
-        north: "N", east: "L", south: "S", west: "O", castle: "Castelo"
+        note2: "As areas ciano e laranja contem 80 assentos cada. A area central e as celulas indisponiveis perto dos portoes nao contam."
       },
       "ru": {
-        title: "Предложение рассадки 2026/06/20",
         status: "Предложено сопернику (не окончательно)",
-        date: "По состоянию на 2026/06/14",
         languageLabel: "Язык",
         sideA: "Сторона 3301: 80 мест",
         sideB: "Сторона 3323: 80 мест",
         redZone: "Внешняя красная зона",
         note1: "Эта страница доступна только для просмотра рассадки и правил.",
-        note2: "Голубая и оранжевая зоны содержат по 80 мест. Центральная пустая зона и недоступные клетки у ворот не учитываются.",
-        north: "С", east: "В", south: "Ю", west: "З", castle: "Замок"
+        note2: "Голубая и оранжевая зоны содержат по 80 мест. Центральная пустая зона и недоступные клетки у ворот не учитываются."
       },
       "id": {
-        title: "Proposal Kursi 2026/06/20",
         status: "Diajukan ke pihak lawan (belum final)",
-        date: "Per 2026/06/14",
         languageLabel: "Bahasa",
         sideA: "Sisi 3301: 80 kursi",
         sideB: "Sisi 3323: 80 kursi",
         redZone: "Zona merah luar",
         note1: "Halaman ini hanya untuk melihat proposal kursi dan konfirmasi aturan.",
-        note2: "Area biru muda dan oranye masing-masing berisi 80 kursi. Area kosong tengah dan sel yang tidak tersedia di dekat gerbang tidak dihitung.",
-        north: "U", east: "T", south: "S", west: "B", castle: "Kastel"
+        note2: "Area biru muda dan oranye masing-masing berisi 80 kursi. Area kosong tengah dan sel yang tidak tersedia di dekat gerbang tidak dihitung."
       },
       "th": {
-        title: "ข้อเสนอที่นั่ง 2026/06/20",
         status: "เสนอให้ฝ่ายตรงข้ามแล้ว (ยังไม่สรุป)",
-        date: "ณ วันที่ 2026/06/14",
         languageLabel: "ภาษา",
         sideA: "ฝ่าย 3301: 80 ที่นั่ง",
         sideB: "ฝ่าย 3323: 80 ที่นั่ง",
         redZone: "เขตแดงรอบนอก",
         note1: "หน้านี้เป็นหน้าอ่านอย่างเดียวสำหรับตรวจสอบที่นั่งและกฎ",
-        note2: "พื้นที่สีฟ้าและสีส้มมีฝ่ายละ 80 ที่นั่ง พื้นที่ว่างกลางและช่องที่นั่งไม่ได้ใกล้ประตูจะไม่ถูกนับ",
-        north: "เหนือ", east: "ตะวันออก", south: "ใต้", west: "ตะวันตก", castle: "ปราสาท"
+        note2: "พื้นที่สีฟ้าและสีส้มมีฝ่ายละ 80 ที่นั่ง พื้นที่ว่างกลางและช่องที่นั่งไม่ได้ใกล้ประตูจะไม่ถูกนับ"
       },
       "vi": {
-        title: "De xuat cho ngoi 2026/06/20",
         status: "Da de xuat cho doi phuong (chua chot)",
-        date: "Tinh den 2026/06/14",
         languageLabel: "Ngon ngu",
         sideA: "Phe 3301: 80 cho",
         sideB: "Phe 3323: 80 cho",
         redZone: "Vung do ben ngoai",
         note1: "Trang nay chi de xem de xuat cho ngoi va xac nhan quy tac.",
-        note2: "Khu mau xanh va cam moi khu co 80 cho. Khu trong o giua va cac o khong the ngoi gan cong khong duoc tinh.",
-        north: "B", east: "D", south: "N", west: "T", castle: "Thanh"
+        note2: "Khu mau xanh va cam moi khu co 80 cho. Khu trong o giua va cac o khong the ngoi gan cong khong duoc tinh."
       },
       "fr": {
-        title: "Proposition de placement 2026/06/20",
         status: "Propose a l'adversaire (non final)",
-        date: "Au 2026/06/14",
         languageLabel: "Langue",
         sideA: "Cote 3301 : 80 places",
         sideB: "Cote 3323 : 80 places",
         redZone: "Zone rouge exterieure",
         note1: "Cette page est en lecture seule pour verifier le placement et les regles.",
-        note2: "Les zones cyan et orange contiennent chacune 80 places. La zone centrale et les cases indisponibles pres des portes ne sont pas incluses.",
-        north: "N", east: "E", south: "S", west: "O", castle: "Chateau"
+        note2: "Les zones cyan et orange contiennent chacune 80 places. La zone centrale et les cases indisponibles pres des portes ne sont pas incluses."
       },
       "de": {
-        title: "Sitzplatzvorschlag 2026/06/20",
         status: "Dem Gegner vorgeschlagen (nicht final)",
-        date: "Stand 2026/06/14",
         languageLabel: "Sprache",
         sideA: "3301-Seite: 80 Sitze",
         sideB: "3323-Seite: 80 Sitze",
         redZone: "Aussere rote Zone",
         note1: "Diese Seite ist nur zur Ansicht der Sitzordnung und Regeln gedacht.",
-        note2: "Die cyanfarbenen und orangefarbenen Bereiche enthalten jeweils 80 Sitze. Der mittlere Leerbereich und nicht verfuegbare Felder an den Toren zaehlen nicht.",
-        north: "N", east: "O", south: "S", west: "W", castle: "Burg"
+        note2: "Die cyanfarbenen und orangefarbenen Bereiche enthalten jeweils 80 Sitze. Der mittlere Leerbereich und nicht verfuegbare Felder an den Toren zaehlen nicht."
       },
       "tr": {
-        title: "2026/06/20 Koltuk Onerisi",
         status: "Rakip tarafa onerildi (kesin degil)",
-        date: "2026/06/14 itibariyla",
         languageLabel: "Dil",
         sideA: "3301 tarafi: 80 koltuk",
         sideB: "3323 tarafi: 80 koltuk",
         redZone: "Dis kirmizi bolge",
         note1: "Bu sayfa koltuk plani ve kurallari kontrol etmek icin salt okunurdur.",
-        note2: "Camgobegi ve turuncu alanlarin her biri 80 koltuk icerir. Orta bos alan ve kapilarin yanindaki kullanilamaz hucreler dahil degildir.",
-        north: "K", east: "D", south: "G", west: "B", castle: "Kale"
+        note2: "Camgobegi ve turuncu alanlarin her biri 80 koltuk icerir. Orta bos alan ve kapilarin yanindaki kullanilamaz hucreler dahil degildir."
       }
     };
 
@@ -491,13 +349,8 @@
       const t = translations[language] || translations.ja;
       document.documentElement.lang = language;
       document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
-      document.title = t.title;
       document.querySelectorAll("[data-i18n]").forEach((node) => {
         const key = node.getAttribute("data-i18n");
-        node.textContent = t[key] || translations.ja[key] || "";
-      });
-      document.querySelectorAll("[data-svg-i18n]").forEach((node) => {
-        const key = node.getAttribute("data-svg-i18n");
         node.textContent = t[key] || translations.ja[key] || "";
       });
       localStorage.setItem("svs-seat-room-language", language);
