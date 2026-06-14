@@ -3,33 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>2026/06/20 SVS配席</title>
+  <title>2026/06/20 SVS Seating</title>
   <style>
     * { box-sizing: border-box; }
-
     body {
       margin: 0;
       background: #ffffff;
       color: #1f2933;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
-
     main {
       width: 100%;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 0;
     }
-
     .map {
       display: block;
       width: min(100vw, 1488px);
       height: auto;
       margin: 0 auto;
     }
-
     .panel {
       width: min(100vw, 1488px);
       padding: 10px 14px 18px;
@@ -38,19 +33,16 @@
       border-top: 1px solid #e5e7eb;
       background: #ffffff;
     }
-
     .controls {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       align-items: center;
     }
-
     label {
       font-weight: 800;
       color: #4b5563;
     }
-
     select {
       min-width: 220px;
       padding: 8px 34px 8px 10px;
@@ -61,13 +53,11 @@
       font-size: 15px;
       font-weight: 800;
     }
-
     .legend {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
     }
-
     .chip {
       display: inline-flex;
       align-items: center;
@@ -78,18 +68,15 @@
       border-radius: 999px;
       font-weight: 800;
     }
-
     .swatch {
       width: 18px;
       height: 18px;
       border-radius: 4px;
       border: 1px solid rgba(0, 0, 0, .2);
     }
-
     .cyan { background: #8ee9ff; }
     .orange { background: #ffd29a; }
     .red { background: #ef233c; }
-
     .notes {
       display: grid;
       gap: 6px;
@@ -97,13 +84,11 @@
       font-size: 14px;
       line-height: 1.6;
     }
-
     [dir="rtl"] .panel,
     [dir="rtl"] .controls,
     [dir="rtl"] .legend {
       direction: rtl;
     }
-
     @media (max-width: 720px) {
       .panel { padding: 10px 12px 16px; }
       .controls, select { width: 100%; }
@@ -112,7 +97,7 @@
 </head>
 <body>
   <main>
-    <img class="map" src="assets/2026-06-20-svs-seating.png" alt="2026/06/20 SVS seating proposal">
+    <img class="map" src="assets/2026-06-20-svs-seating-approved-v2.png" alt="2026/06/20 SVS seating proposal">
 
     <section class="panel" aria-label="Information">
       <div class="controls">
@@ -145,74 +130,74 @@
       <div class="notes">
         <div data-i18n="note1">このページは、配席案とルール確認のための閲覧専用ページです。</div>
         <div data-i18n="note2">水色・橙色のマスは各80席です。中央空白と東西南北まわりの座れないマスは配席対象外です。</div>
-        <div data-i18n="note3">上の配置図は確定前の提案です。画像内の表示を正式な配席図として確認してください。</div>
+        <div data-i18n="note3">上の配置図は確定前の提案です。画像の表示を正式な配席図として確認してください。</div>
       </div>
     </section>
   </main>
 
   <script>
     const translations = {
-      "ja": {
+      ja: {
         languageLabel: "表示言語",
         sideA: "3301側: 80席",
         sideB: "3323側: 80席",
         redZone: "外周レッドゾーン",
         note1: "このページは、配席案とルール確認のための閲覧専用ページです。",
         note2: "水色・橙色のマスは各80席です。中央空白と東西南北まわりの座れないマスは配席対象外です。",
-        note3: "上の配置図は確定前の提案です。画像内の表示を正式な配席図として確認してください。"
+        note3: "上の配置図は確定前の提案です。画像の表示を正式な配席図として確認してください。"
       },
-      "en": {
+      en: {
         languageLabel: "Language",
         sideA: "3301 side: 80 seats",
         sideB: "3323 side: 80 seats",
         redZone: "Outer red zone",
         note1: "This page is view-only for seating and rule confirmation.",
-        note2: "Cyan and orange areas each contain 80 seats. The center blank area and unavailable gate-side cells are not included.",
+        note2: "The cyan and orange areas each contain 80 seats. The center blank area and unavailable cells around the four gates are not included.",
         note3: "The map above is a proposal before final agreement. Please use the image itself as the official seating reference."
       },
       "zh-CN": {
         languageLabel: "显示语言",
-        sideA: "3301方：80个座位",
-        sideB: "3323方：80个座位",
-        redZone: "外圈红区",
+        sideA: "3301方: 80席",
+        sideB: "3323方: 80席",
+        redZone: "外周红区",
         note1: "此页面仅用于查看座位提案和确认规则。",
-        note2: "水色和橙色区域各有80个座位。中央空白区以及四门附近不可坐的位置不计入座位。",
-        note3: "上方配置图为最终确定前的提案。请以图片中的内容作为正式座位参考。"
+        note2: "蓝色和橙色区域各有80个座位。中央空白区和四个方向周围不可入座的格子不计入座位。",
+        note3: "上方地图是最终确认前的提案。请以图片内容作为正式座位参考。"
       },
       "zh-TW": {
         languageLabel: "顯示語言",
-        sideA: "3301方：80席",
-        sideB: "3323方：80席",
-        redZone: "外圈紅區",
+        sideA: "3301方: 80席",
+        sideB: "3323方: 80席",
+        redZone: "外周紅區",
         note1: "此頁面僅供查看座位提案與確認規則。",
-        note2: "水色與橙色區域各有80席。中央空白區及四門附近不可坐的位置不列入座位。",
-        note3: "上方配置圖為尚未確定前的提案。請以圖片內容作為正式座位參考。"
+        note2: "水色與橙色區域各有80席。中央空白區與四個方向周圍不可入座的格子不列入座位。",
+        note3: "上方配置圖是最終確認前的提案。請以圖片內容作為正式座位參考。"
       },
-      "ko": {
+      ko: {
         languageLabel: "표시 언어",
-        sideA: "3301 측: 80석",
-        sideB: "3323 측: 80석",
+        sideA: "3301측: 80석",
+        sideB: "3323측: 80석",
         redZone: "외곽 레드존",
-        note1: "이 페이지는 좌석안과 규칙 확인을 위한 읽기 전용 페이지입니다.",
-        note2: "하늘색과 주황색 구역은 각각 80석입니다. 중앙 공백과 사방 게이트 주변의 착석 불가 칸은 제외됩니다.",
-        note3: "위 배치도는 최종 확정 전 제안입니다. 이미지 안의 표시를 공식 좌석 기준으로 확인해 주세요."
+        note1: "이 페이지는 좌석 배치안과 규칙 확인을 위한 보기 전용 페이지입니다.",
+        note2: "하늘색과 주황색 구역은 각각 80석입니다. 중앙 빈 공간과 네 방향 주변의 착석 불가 칸은 포함하지 않습니다.",
+        note3: "위 배치도는 최종 확정 전 제안입니다. 이미지 내용을 공식 좌석 참고자료로 확인해 주세요."
       },
-      "ar": {
+      ar: {
         languageLabel: "اللغة",
         sideA: "جانب 3301: 80 مقعدا",
         sideB: "جانب 3323: 80 مقعدا",
         redZone: "المنطقة الحمراء الخارجية",
-        note1: "هذه الصفحة للعرض فقط من أجل مراجعة المقاعد والقواعد.",
-        note2: "تحتوي المناطق السماوية والبرتقالية على 80 مقعدا لكل جانب. المنطقة الوسطى والخانات غير المتاحة قرب البوابات غير مشمولة.",
-        note3: "الخريطة أعلاه مقترح قبل الاتفاق النهائي. يرجى اعتماد ما يظهر داخل الصورة كمرجع رسمي للمقاعد."
+        note1: "هذه الصفحة للعرض فقط من أجل تأكيد المقاعد والقواعد.",
+        note2: "تحتوي منطقتا اللون السماوي والبرتقالي على 80 مقعدا لكل جانب. لا يتم احتساب المنطقة الوسطى والخانات غير المتاحة حول الجهات الأربع.",
+        note3: "الخريطة أعلاه اقتراح قبل الاتفاق النهائي. يرجى اعتماد الصورة نفسها كمرجع رسمي للمقاعد."
       },
-      "es": {
+      es: {
         languageLabel: "Idioma",
         sideA: "Lado 3301: 80 asientos",
         sideB: "Lado 3323: 80 asientos",
         redZone: "Zona roja exterior",
         note1: "Esta pagina es solo de lectura para revisar asientos y reglas.",
-        note2: "Las zonas cian y naranja tienen 80 asientos cada una. El centro y las casillas no disponibles cerca de las puertas no cuentan.",
+        note2: "Las zonas cian y naranja tienen 80 asientos cada una. El centro y las casillas no disponibles alrededor de las cuatro puertas no cuentan.",
         note3: "El mapa superior es una propuesta antes del acuerdo final. Use la imagen como referencia oficial de asientos."
       },
       "pt-BR": {
@@ -221,92 +206,89 @@
         sideB: "Lado 3323: 80 assentos",
         redZone: "Zona vermelha externa",
         note1: "Esta pagina e somente para visualizacao da proposta de assentos e das regras.",
-        note2: "As areas ciano e laranja contem 80 assentos cada. A area central e as celulas indisponiveis perto dos portoes nao contam.",
+        note2: "As areas ciano e laranja contem 80 assentos cada. A area central e as celulas indisponiveis ao redor dos quatro portoes nao contam.",
         note3: "O mapa acima e uma proposta antes do acordo final. Use a propria imagem como referencia oficial de assentos."
       },
-      "ru": {
+      ru: {
         languageLabel: "Язык",
         sideA: "Сторона 3301: 80 мест",
         sideB: "Сторона 3323: 80 мест",
         redZone: "Внешняя красная зона",
-        note1: "Эта страница доступна только для просмотра рассадки и правил.",
-        note2: "Голубая и оранжевая зоны содержат по 80 мест. Центральная пустая зона и недоступные клетки у ворот не учитываются.",
-        note3: "Карта выше является предложением до окончательного соглашения. Используйте изображение как официальный ориентир рассадки."
+        note1: "Эта страница предназначена только для просмотра схемы мест и подтверждения правил.",
+        note2: "Голубая и оранжевая зоны содержат по 80 мест. Центральная пустая зона и недоступные клетки вокруг четырех направлений не учитываются.",
+        note3: "Карта выше является предложением до окончательного согласования. Используйте изображение как официальный ориентир рассадки."
       },
-      "id": {
+      id: {
         languageLabel: "Bahasa",
         sideA: "Sisi 3301: 80 kursi",
         sideB: "Sisi 3323: 80 kursi",
         redZone: "Zona merah luar",
         note1: "Halaman ini hanya untuk melihat proposal kursi dan konfirmasi aturan.",
-        note2: "Area biru muda dan oranye masing-masing berisi 80 kursi. Area kosong tengah dan sel yang tidak tersedia di dekat gerbang tidak dihitung.",
+        note2: "Area biru muda dan oranye masing-masing berisi 80 kursi. Area kosong tengah dan sel yang tidak tersedia di sekitar empat gerbang tidak dihitung.",
         note3: "Peta di atas adalah proposal sebelum kesepakatan final. Gunakan gambar tersebut sebagai referensi resmi kursi."
       },
-      "th": {
+      th: {
         languageLabel: "ภาษา",
-        sideA: "ฝ่าย 3301: 80 ที่นั่ง",
-        sideB: "ฝ่าย 3323: 80 ที่นั่ง",
+        sideA: "ฝั่ง 3301: 80 ที่นั่ง",
+        sideB: "ฝั่ง 3323: 80 ที่นั่ง",
         redZone: "เขตแดงรอบนอก",
-        note1: "หน้านี้เป็นหน้าอ่านอย่างเดียวสำหรับตรวจสอบที่นั่งและกฎ",
-        note2: "พื้นที่สีฟ้าและสีส้มมีฝ่ายละ 80 ที่นั่ง พื้นที่ว่างกลางและช่องที่นั่งไม่ได้ใกล้ประตูจะไม่ถูกนับ",
-        note3: "แผนที่ด้านบนเป็นข้อเสนอก่อนสรุป โปรดใช้ภาพนี้เป็นข้อมูลอ้างอิงที่นั่งอย่างเป็นทางการ"
+        note1: "หน้านี้เป็นหน้าอ่านอย่างเดียวสำหรับตรวจสอบผังที่นั่งและกติกา",
+        note2: "พื้นที่สีฟ้าและสีส้มมีฝั่งละ 80 ที่นั่ง พื้นที่ว่างกลางและช่องที่นั่งไม่ได้รอบทิศทั้งสี่จะไม่นับรวม",
+        note3: "แผนผังด้านบนเป็นข้อเสนอก่อนสรุป โปรดใช้ภาพนี้เป็นเอกสารอ้างอิงที่นั่งอย่างเป็นทางการ"
       },
-      "vi": {
+      vi: {
         languageLabel: "Ngon ngu",
         sideA: "Phe 3301: 80 cho",
         sideB: "Phe 3323: 80 cho",
         redZone: "Vung do ben ngoai",
         note1: "Trang nay chi de xem de xuat cho ngoi va xac nhan quy tac.",
-        note2: "Khu mau xanh va cam moi khu co 80 cho. Khu trong o giua va cac o khong the ngoi gan cong khong duoc tinh.",
-        note3: "Ban do phia tren la de xuat truoc khi chot. Hay dung noi dung trong anh lam tham chieu chinh thuc."
+        note2: "Khu mau xanh va cam moi khu co 80 cho. Khu trong o giua va cac o khong the ngoi quanh bon huong khong duoc tinh.",
+        note3: "Ban do phia tren la de xuat truoc khi thong nhat cuoi cung. Hay dung chinh hinh anh lam tai lieu tham chieu chinh thuc."
       },
-      "fr": {
+      fr: {
         languageLabel: "Langue",
-        sideA: "Cote 3301 : 80 places",
-        sideB: "Cote 3323 : 80 places",
+        sideA: "Cote 3301: 80 places",
+        sideB: "Cote 3323: 80 places",
         redZone: "Zone rouge exterieure",
-        note1: "Cette page est en lecture seule pour verifier le placement et les regles.",
-        note2: "Les zones cyan et orange contiennent chacune 80 places. La zone centrale et les cases indisponibles pres des portes ne sont pas incluses.",
-        note3: "La carte ci-dessus est une proposition avant accord final. Utilisez l'image comme reference officielle de placement."
+        note1: "Cette page est en lecture seule pour verifier le plan de placement et les regles.",
+        note2: "Les zones cyan et orange contiennent chacune 80 places. La zone centrale vide et les cases indisponibles autour des quatre directions ne sont pas incluses.",
+        note3: "La carte ci-dessus est une proposition avant accord final. Utilisez l'image elle-meme comme reference officielle."
       },
-      "de": {
+      de: {
         languageLabel: "Sprache",
-        sideA: "3301-Seite: 80 Sitze",
-        sideB: "3323-Seite: 80 Sitze",
-        redZone: "Aussere rote Zone",
-        note1: "Diese Seite ist nur zur Ansicht der Sitzordnung und Regeln gedacht.",
-        note2: "Die cyanfarbenen und orangefarbenen Bereiche enthalten jeweils 80 Sitze. Der mittlere Leerbereich und nicht verfuegbare Felder an den Toren zaehlen nicht.",
-        note3: "Die Karte oben ist ein Vorschlag vor der finalen Einigung. Bitte nutzen Sie das Bild selbst als offizielle Sitzreferenz."
+        sideA: "Seite 3301: 80 Plaetze",
+        sideB: "Seite 3323: 80 Plaetze",
+        redZone: "Aeussere rote Zone",
+        note1: "Diese Seite ist nur zur Ansicht des Sitzplans und zur Regelbestaetigung gedacht.",
+        note2: "Die cyanfarbenen und orangefarbenen Bereiche enthalten jeweils 80 Plaetze. Der freie Mittelbereich und die nicht verfuegbaren Felder um die vier Richtungen sind nicht enthalten.",
+        note3: "Die Karte oben ist ein Vorschlag vor der endgueltigen Einigung. Bitte verwenden Sie das Bild selbst als offizielle Sitzreferenz."
       },
-      "tr": {
+      tr: {
         languageLabel: "Dil",
         sideA: "3301 tarafi: 80 koltuk",
         sideB: "3323 tarafi: 80 koltuk",
         redZone: "Dis kirmizi bolge",
-        note1: "Bu sayfa koltuk plani ve kurallari kontrol etmek icin salt okunurdur.",
-        note2: "Camgobegi ve turuncu alanlarin her biri 80 koltuk icerir. Orta bos alan ve kapilarin yanindaki kullanilamaz hucreler dahil degildir.",
-        note3: "Yukaridaki harita nihai anlasma oncesi oneridir. Resmin kendisini resmi koltuk referansi olarak kullanin."
+        note1: "Bu sayfa koltuk plani ve kural onayi icin salt okunur olarak hazirlanmistir.",
+        note2: "Camgobegi ve turuncu alanlarin her biri 80 koltuk icerir. Orta bos alan ve dort yon etrafindaki kullanilamayan kareler dahil degildir.",
+        note3: "Yukaridaki harita nihai anlasmadan onceki oneridir. Resmin kendisini resmi koltuk referansi olarak kullanin."
       }
     };
 
-    const selector = document.getElementById("language");
-    const stored = localStorage.getItem("svs-seat-room-language");
-    const initialLanguage = translations[stored] ? stored : "ja";
-    selector.value = initialLanguage;
-
-    function applyLanguage(language) {
-      const t = translations[language] || translations.ja;
-      document.documentElement.lang = language;
-      document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
-      document.querySelectorAll("[data-i18n]").forEach((node) => {
-        const key = node.getAttribute("data-i18n");
-        node.textContent = t[key] || translations.ja[key] || "";
+    const select = document.getElementById("language");
+    function applyLanguage(lang) {
+      const dict = translations[lang] || translations.ja;
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key]) el.textContent = dict[key];
       });
-      localStorage.setItem("svs-seat-room-language", language);
+      localStorage.setItem("svs-seat-room-language", lang);
     }
-
-    selector.addEventListener("change", (event) => applyLanguage(event.target.value));
-    applyLanguage(initialLanguage);
+    select.addEventListener("change", () => applyLanguage(select.value));
+    const saved = localStorage.getItem("svs-seat-room-language") || "ja";
+    if (translations[saved]) select.value = saved;
+    applyLanguage(select.value);
   </script>
 </body>
 </html>
